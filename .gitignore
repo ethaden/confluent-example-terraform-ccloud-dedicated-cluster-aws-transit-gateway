@@ -1,0 +1,6 @@
+*.key
+api-key.txt
+.terraform*
+*.tfstate
+*.backup
+terraform.tfvars

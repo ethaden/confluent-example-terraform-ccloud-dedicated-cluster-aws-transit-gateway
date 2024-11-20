@@ -1,0 +1,8 @@
+purpose = "Transit Gateway Demo"
+#owner_email = "test@confluent.io"
+# An invalid email address for testing
+#owner_email = "test@confluent.io-"
+#owner_email = ""
+#owner_fullname = "My Name"
+#owner = "myuser"
+vpc_id = 
