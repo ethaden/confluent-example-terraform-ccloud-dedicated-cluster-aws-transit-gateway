@@ -1,9 +1,6 @@
 resource "confluent_environment" "myenv" {
   display_name = "${var.resource_prefix}aws_transit_gateway"
 
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "confluent_network" "net" {
@@ -67,3 +64,15 @@ resource "confluent_transit_gateway_attachment" "confluent_tgw_attach" {
 #     dns_server_ips = ["10.200.0.0", "10.200.0.1"]
 #   }
 # }
+
+# Find the routing table
+data "aws_route_tables" "rts" {
+  vpc_id = var.vpc_id
+}
+
+resource "aws_route" "routes" {
+  for_each               = toset(data.aws_route_tables.rts.ids)
+  route_table_id         = each.key
+  destination_cidr_block = confluent_network.net.cidr
+  transit_gateway_id     = aws_ec2_transit_gateway.tgw.id
+}
