@@ -57,11 +57,66 @@ variable "public_ssh_key" {
 
 variable "resource_prefix" {
     type = string
-    default = "ethaden_terraform_basic_env_"
+    default = ""
     description = "This string will be used as prefix for generated resources"
 }
 
 variable "vpc_id" {
     type = string
     description = "The Id of the VPC to connect the transit gateway to"
+}
+
+variable "generated_files_path" {
+    description = "The main path to write generated files to"
+    type = string
+    default = "./generated"
+}
+
+variable "ccloud_cluster_topic" {
+    type = string
+    default = "test"
+    description = "The name of the Kafka topic to create and to subscribe to"
+}
+
+variable "ccloud_cluster_consumer_group_prefix" {
+    type = string
+    default = "client-"
+    description = "The name of the Kafka consumer group prefix to grant access to the Kafka consumer"
+}
+
+variable "ccloud_cluster_generate_client_config_files" {
+    type = bool
+    default = false
+    description = "Set to true if you want to generate client configs with the created API keys under subfolder \"generated/client-configs\""
+}
+
+variable "ccloud_create_api_keys" {
+    type = bool
+    default = false
+    description = "If set to true, creates api keys and roles"
+}
+
+variable "hosted_zone_domain" {
+    type = string
+    default = "example-confluent-dedicated-cluster-aws-tgw.local"
+    description = "The domain for the example hosted zone"
+}
+
+
+# variable "db_password" {
+#   description = "RDS root user password"
+#   type        = string
+#   sensitive   = true
+# }
+
+# variable "db_identifier" {
+#   type        = string
+#   default = "confluentexmampleawstransitgateway"
+#   description = "Identifier of the database"
+# }
+
+variable "s3_bucket_name" {
+    type = string
+    default = "confluentexmampleawstransitgateway"
+    description = "Identifier of the S3 bucket to be created (only lowercase alphanumeric characters and hyphens allowed!)"
 }

@@ -6,3 +6,5 @@ purpose = "Transit Gateway Demo"
 #owner_fullname = "My Name"
 #owner = "myuser"
 vpc_id = 
+resource_prefix = "aws_transit_gateway_example"
+db_password = 
