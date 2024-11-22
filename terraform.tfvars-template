@@ -8,3 +8,5 @@ purpose = "Transit Gateway Demo"
 vpc_id = 
 resource_prefix = "aws_transit_gateway_example"
 db_password = 
+ssh_key_name = 
+# hosted_zone_domain =

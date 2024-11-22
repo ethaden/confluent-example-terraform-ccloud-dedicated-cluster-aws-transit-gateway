@@ -49,10 +49,9 @@ variable "owner_fullname" {
     description = "All resources are tagged with an owner_fullname tag. If none is provided in this variable, a useful value is derived from the environment"
 }
 
-variable "public_ssh_key" {
+variable "ssh_key_name" {
     type = string
-    default = ""
-    description = "Public SSH key to use. If not specified, use either $HOME/.ssh/id_ed25519.pub or if that does not exist: $HOME/.ssh/id_rsa.pub"
+    description = "Existing (in AWS) public SSH key to use"
 }
 
 variable "resource_prefix" {
@@ -119,4 +118,10 @@ variable "s3_bucket_name" {
     type = string
     default = "confluentexmampleawstransitgateway"
     description = "Identifier of the S3 bucket to be created (only lowercase alphanumeric characters and hyphens allowed!)"
+}
+
+variable "database_instance_type" {
+    type = string
+    default = "t2.micro"
+    description = "The type of the database EC2 instance"
 }
